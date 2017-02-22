@@ -5,6 +5,31 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div id="display"></div>
+    <script id="info" type="x/template">
+      <span>General Info Goes Here</span>
+    </script>
+    <script id="maps" type="x/template">
+      <span>Maps Goes Here</span>
+    </script>
+    <script id="netflix" type="x/template">
+      <iframe src="https://www.netflix.com/watch/70264856?trackId=14170068&tctx=0%2C2%2C8b025317-5c2d-4580-af5e-e71ff5da7016-181021053"></iframe>
+    </script>
+    <script id="camera" type="x/template">
+      <video id="front-video" autoplay></video>
+    </script>
+    <script id="tinder" type="x/template">
+      <span>General Info Goes Here</span>
+    </script>
+    <script id="rear-camera" type="x/template">
+      <video id="rear-video" autoplay></video>
+    </script>
+    <div id="display">
+      <info v-if="mainScreen === 'info'"></info>
+      <maps v-if="mainScreen === 'maps'"></maps>
+      <netflix v-if="mainScreen === 'netflix'"></netflix>
+      <camera v-if="mainScreen === 'camera'"></camera>
+      <tinder v-if="mainScreen === 'tinder'"></tinder>
+      <rear-camera v-if="rearCameraEnabled"></rear-camera>
+    </div>
   </body>
 </html>

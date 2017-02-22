@@ -3,18 +3,35 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="main.css">
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script src="vue.js"></script>
+    <script src="coffee-script.js"></script>
+    <script type="text/coffeescript" src="main.coffee"></script>
   </head>
   <body>
     <div id="tablet">
       <div v-if="loggedIn">
         Welcome Gavy
-        <button v-on:click="launchMaps">Maps</button>
-        <button v-on:click="launchNetflix">Netflix</button>
-        <button v-on:click="launchCamera">Camera</button>
-        <button v-on:click="launchTinder">Tinder</button>
+        <button v-on:click="launchApp('maps')">Maps</button>
+        <button v-on:click="launchApp('netflix')">Netflix</button>
+        <button v-on:click="launchApp('camera')">Camera</button>
+        <button v-on:click="launchApp('tinder')">Tinder</button>
         <button v-on:click="toggleRearCamera">Toggle Rear Camera</button>
+        <div v-if="currentApp === 'maps'">
+          maps controls
+          <button v-on:click="closeApp">Close App</button>
+        </div>
+        <div v-if="currentApp === 'netflix'">
+          netflix controls
+          <button v-on:click="closeApp">Close App</button>
+        </div>
+        <div v-if="currentApp === 'camera'">
+          camera controls
+          <button v-on:click="closeApp">Close App</button>
+        </div>
+        <div v-if="currentApp === 'tinder'">
+          tinder controls
+          <button v-on:click="closeApp">Close App</button>
+        </div>
       </div>
       <div v-else>
         Log In Screen Comes Here
