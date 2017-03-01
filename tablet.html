@@ -10,11 +10,11 @@
   <body>
     <div id="tablet">
       <div v-if="loggedIn">
-        Welcome Gavy
+        <h2> Welcome Gavy </h2>
         <button v-on:click="launchApp('maps')">Maps</button>
-        <button v-on:click="launchApp('netflix')">Netflix</button>
+        <button v-on:click="launchApp('netflix')" id="netflix"> </button>
         <button v-on:click="launchApp('camera')">Camera</button>
-        <button v-on:click="launchApp('tinder')">Tinder</button>
+        <button v-on:click="launchApp('tinder')" id="tinder"> </button>
         <button v-on:click="toggleRearCamera">Toggle Rear Camera</button>
         <div v-if="currentApp === 'maps'">
           maps controls
