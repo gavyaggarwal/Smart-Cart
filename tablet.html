@@ -8,9 +8,66 @@
     <script type="text/coffeescript" src="main.coffee"></script>
   </head>
   <body>
+    <script>
+      function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+
+        if (response.status === 'connected') {
+          // Logged into your app and Facebook.
+          FB.api(
+            '/me',
+            'GET',
+            {"fields":"first_name"},
+            function(response) {
+                document.getElementById('welcomeHead').innerHTML = 'Welcome ' + response.first_name + '!';
+            }
+          );
+          this.tabletVue.login()
+        } else if (response.status === 'not_authorized') {
+          // The person is logged into Facebook, but not your app.
+          // document.getElementById('status').innerHTML = 'Please log ' +
+          //   'into this app.';
+        } else {
+          // The person is not logged into Facebook, so we're not sure if
+          // they are logged into this app or not.
+          // document.getElementById('status').innerHTML = 'Please log ' +
+          //   'into Facebook.';
+        }
+      }
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '317999768602668',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+
+      FB.getLoginStatus(function(response) {
+       statusChangeCallback(response);
+      });
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+    </script>
+
     <div id="tablet">
       <div v-if="loggedIn">
-        <h2> Welcome Gavy </h2>
+        <h2 id="welcomeHead"> Welcome </h2>
         <button v-on:click="launchApp('maps')">Maps</button>
         <button v-on:click="launchApp('netflix')" id="netflix"> </button>
         <button v-on:click="launchApp('camera')">Camera</button>
@@ -34,9 +91,8 @@
         </div>
       </div>
       <div v-else>
-        Log In Screen Comes Here
-        [INPUT FIELDS GO HERE]
-        <button v-on:click="login">Login</button>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
       </div>
     </div>
   </body>
