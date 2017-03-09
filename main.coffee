@@ -45,10 +45,10 @@ init = ->
     beforeDestroy: unloadFrontCamera
 
   tinderScreen =
-    template: display.document.getElementById("tinder")
+    template: display.document.getElementById("tinder-template")
 
   rearCameraScreen =
-    template: display.document.getElementById("rear-camera")
+    template: display.document.getElementById("rear-camera-template")
     beforeMount: loadRearCamera
     beforeDestroy: unloadRearCamera
 

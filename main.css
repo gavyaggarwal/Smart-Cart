@@ -1,17 +1,132 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900');
 
+/* General Shared Styles between Tablet and Display */
 html, body {
   font-family: 'Lato', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  background: linear-gradient(to left, #141E30 , #243B55);
+  color: white;
+  overflow: hidden;
+  text-align: center;
 }
 
-button {
-  border: 1px outset blue;
-  background-color: lightBlue;
-  height:100px;
-  width:100px;
+
+
+/* Styles for Tablet Specific Content*/
+img.icon {
+  height:120px;
+  width:120px;
+  margin:100px;
   cursor:pointer;
+  border-radius: 10px;
 }
 
-div {
-  text-align: center
+img.icon + label {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  position: relative;
+  top: -80px;
+  margin-left: -220px;
+}
+
+div.controls {
+  background: linear-gradient(to left, #ECE9E6 , #FFFFFF);
+  width: 60vw;
+  height: 50vh;
+  margin: auto;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 20vw;
+  color: black;
+}
+
+h3 {
+  font-weight: 300;
+  font-size: 4em;
+  height: 20vh;
+  margin: 0px;
+}
+
+.controls-enter-active, .controls-leave-active {
+  transition: transform .5s
+}
+.controls-enter, .controls-leave-to {
+  transform: translate(0, 50vh);
+}
+
+
+
+/* Styles for Display Specific Content*/
+div.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  transition: height 5s;
+}
+
+div.container.split {
+  height: 50vh;
+}
+
+div.container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+div#tinder {
+  background: rgb(255, 254, 255);
+  color: rgb(219, 102, 94);
+  font-size: 0.9em;
+}
+
+div#tinder img {
+  display: block;
+  margin: auto;
+  height: 204px;
+  margin-bottom: 50px;
+}
+
+div #tinder h4 {
+  font-weight: 600;
+  font-size: 2.5em;
+  margin: 12px;
+}
+
+div #tinder h5 {
+  font-weight: 500;
+  font-size: 1.6em;
+  margin: 12px;
+}
+
+div#tinder p {
+  max-width: 400px;
+  text-align: justify;
+  margin: auto;
+}
+
+div#rear-camera {
+  height: 49vh;
+  border-top: 1vh solid white;
+}
+
+div#rear-camera label {
+  font-size: 0.9em;
+  margin: auto;
+  position: absolute;
+  bottom: 5vh;
+  left:0;
+  right:0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: center;
 }

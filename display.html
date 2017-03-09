@@ -6,29 +6,52 @@
   </head>
   <body>
     <script id="info" type="x/template">
-      <span>General Info Goes Here</span>
+      <div class="container">
+        <span>General Info Goes Here</span>
+      </div>
     </script>
     <script id="maps" type="x/template">
-      <span>Maps Goes Here</span>
+      <div class="container">
+        <span>Maps Goes Here</span>
+      </div>
     </script>
     <script id="netflix" type="x/template">
-      <iframe src="https://www.netflix.com/watch/70264856?trackId=14170068&tctx=0%2C2%2C8b025317-5c2d-4580-af5e-e71ff5da7016-181021053"></iframe>
+      <div class="container">
+        <iframe src="https://www.netflix.com/watch/70264856?trackId=14170068&tctx=0%2C2%2C8b025317-5c2d-4580-af5e-e71ff5da7016-181021053"></iframe>
+      </div>
     </script>
     <script id="camera" type="x/template">
-      <video id="front-video" autoplay></video>
+      <div class="container">
+        <video id="front-video" autoplay></video>
+      </div>
     </script>
-    <script id="tinder" type="x/template">
-      <span>General Info Goes Here</span>
+    <script id="tinder-template" type="x/template">
+      <div class="container" id="tinder">
+        <img src="img/tinder_bg.png" />
+        <h4>Your Favorite Dating App</h4>
+        <h5>Now For Smart Cart AG101114XS453</h5>
+        <p>
+          We know that shopping can be a bore sometimes, so we've made your
+          favorite dating app available for the Smart Cart. You'll be able to
+          shop for groceries and love at the same time by discovering new and
+          interesting people nearby and chatting with your matches. Please visit
+          one of our sales associates to enable this feature. A monthly charge
+          of $2.99 may apply.
+        </p>
+      </div>
     </script>
-    <script id="rear-camera" type="x/template">
-      <video id="rear-video" autoplay></video>
+    <script id="rear-camera-template" type="x/template">
+      <div class="container split" id="rear-camera">
+        <video id="rear-video" autoplay></video>
+        <label class="glass">Warning: Objects in camera may be closer than they appear.</label>
+      </div>
     </script>
     <div id="display">
-      <info v-if="mainScreen === 'info'"></info>
-      <maps v-if="mainScreen === 'maps'"></maps>
-      <netflix v-if="mainScreen === 'netflix'"></netflix>
-      <camera v-if="mainScreen === 'camera'"></camera>
-      <tinder v-if="mainScreen === 'tinder'"></tinder>
+      <info v-if="mainScreen === 'info'" v-bind:class="{ split: rearCameraEnabled }"></info>
+      <maps v-if="mainScreen === 'maps'" v-bind:class="{ split: rearCameraEnabled }"></maps>
+      <netflix v-if="mainScreen === 'netflix'" v-bind:class="{ split: rearCameraEnabled }"></netflix>
+      <camera v-if="mainScreen === 'camera'" v-bind:class="{ split: rearCameraEnabled }"></camera>
+      <tinder v-if="mainScreen === 'tinder'" v-bind:class="{ split: rearCameraEnabled }"></tinder>
       <rear-camera v-if="rearCameraEnabled"></rear-camera>
     </div>
   </body>
