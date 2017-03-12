@@ -15,9 +15,18 @@
         <span>Maps Goes Here</span>
       </div>
     </script>
-    <script id="netflix" type="x/template">
-      <div class="container">
-        <iframe src="https://www.netflix.com/watch/70264856?trackId=14170068&tctx=0%2C2%2C8b025317-5c2d-4580-af5e-e71ff5da7016-181021053"></iframe>
+    <script id="netflix-template" type="x/template">
+      <div class="container" id="netflix">
+        <video v-if="isPlaying" autoplay v-bind:src="'netflix/' + file"></video>
+        <div v-else>
+          <img src="img/netflix_bg.png" />
+          <p>
+            You can now keep up with your grocery list and favorite TV shows at
+            the same time. This smart cart is equipped with an onboard
+            entertainment system to improve your shopping experience. Choose a
+            title from the control panel to get started.
+          </p>
+        </div>
       </div>
     </script>
     <script id="camera" type="x/template">

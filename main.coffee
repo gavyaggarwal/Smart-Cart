@@ -8,9 +8,17 @@ init = ->
     tablet:
       loggedIn: false
       currentApp: null
+      netflix:
+        isPlaying: false
+        title: null
+        upgrade: false
+        paused: false
     display:
       mainScreen: "info"
       rearCameraEnabled: false
+      netflix:
+        isPlaying: false
+        file: null
 
   tablet.state = data.tablet
   display.state = data.display
@@ -29,6 +37,22 @@ init = ->
         data.tablet.currentApp = null
       toggleRearCamera: ->
         data.display.rearCameraEnabled = !data.display.rearCameraEnabled
+      chooseMovie: (title, file, paid) ->
+        data.tablet.netflix.upgrade = paid
+        data.tablet.netflix.isPlaying = !paid
+        data.display.netflix.isPlaying = !paid
+        data.tablet.netflix.title = title
+        data.display.netflix.file = file
+        data.display.netflix.paused = false
+      togglePause: ->
+        data.tablet.netflix.paused = !data.tablet.netflix.paused
+        if data.tablet.netflix.paused
+          display.document.querySelector('#netflix video').pause()
+        else
+          display.document.querySelector('#netflix video').play()
+      skipInVideo: (time) ->
+        video = display.document.querySelector('#netflix video')
+        video.currentTime += time
 
   infoScreen =
     template: display.document.getElementById("info")
@@ -37,7 +61,9 @@ init = ->
     template: display.document.getElementById("maps")
 
   netflixScreen =
-    template: display.document.getElementById("netflix")
+    template: display.document.getElementById("netflix-template")
+    data: ->
+      return data.display.netflix
 
   cameraScreen =
     template: display.document.getElementById("camera")

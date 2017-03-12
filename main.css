@@ -5,7 +5,7 @@ html, body {
   font-family: 'Lato', sans-serif;
   padding: 0px;
   margin: 0px;
-  background: linear-gradient(to left, #141E30 , #243B55);
+  background: linear-gradient(to left, #cb2d3e , #ef473a);
   color: white;
   overflow: hidden;
   text-align: center;
@@ -34,7 +34,7 @@ img.icon + label {
 div.controls {
   background: linear-gradient(to left, #ECE9E6 , #FFFFFF);
   width: 60vw;
-  height: 50vh;
+  height: 80vh;
   margin: auto;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -42,6 +42,78 @@ div.controls {
   bottom: 0px;
   left: 20vw;
   color: black;
+  padding: 20px;
+  border: 1px solid #333;
+  border-bottom-width: 0px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px black
+}
+
+div.controls div.header {
+  font-size: 2em;
+  height: 40px;
+  padding: 20px;
+  line-height: 40px;
+  border-bottom: 1px solid #333;
+  margin: -20px -20px 20px -20px;
+}
+
+div.controls div.header button {
+    float: right;
+    border-width: 0px;
+    background: transparent;
+    font-size: 40px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+div.controls p {
+    margin: 10px 40px;
+}
+
+div.controls h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+div.controls p.error {
+    color: #ff3300;
+}
+
+div.controls ul {
+    list-style-type: none;
+    margin: 30px auto;
+    padding: 0;
+    width: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 50vh;
+}
+
+div.controls ul li {
+    padding: 20px;
+    border-top: 1px solid #333;
+    text-align: left;
+}
+
+div.controls ul li span {
+    font-weight: bold;
+    display: block;
+}
+
+div.controls ul li span.paid {
+    margin-left: 10px;
+    display: inline;
+    color: #009933;
+}
+
+div.controls ul li:first-child {
+    border-top-width: 0px;
+}
+
+div.controls #control-bar img {
+    margin: 0px 20px 10px 20px;
+    cursor: pointer;
 }
 
 h3 {
@@ -55,7 +127,7 @@ h3 {
   transition: transform .5s
 }
 .controls-enter, .controls-leave-to {
-  transform: translate(0, 50vh);
+  transform: translate(0, 80vh);
 }
 
 
@@ -108,6 +180,24 @@ div#tinder p {
   max-width: 400px;
   text-align: justify;
   margin: auto;
+}
+
+div#netflix {
+  background: linear-gradient(to left, #131516 , #212325);
+  font-size: 1.1em;
+}
+
+div#netflix img {
+  display: block;
+  height: 150px;
+  margin: 15% auto 20px auto;
+}
+
+div#netflix p {
+  max-width: 400px;
+  text-align: justify;
+  margin: auto;
+  color: rgb(233, 41, 44);
 }
 
 div#rear-camera {
