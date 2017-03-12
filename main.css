@@ -178,7 +178,7 @@ div.container {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  transition: height 5s;
+  transition: height 0.5s;
 }
 
 div.container.split {

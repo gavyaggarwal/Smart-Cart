@@ -40,9 +40,9 @@
               <p>Now Playing:</p>
               <h4>{{ netflix.title }}</h4>
               <div id="control-bar">
-                <img v-on:click="skipInVideo(-30)" src="img/next.png" style="transform: rotate(180deg)"/>
+                <img v-on:click="skipInVideo(-60)" src="img/next.png" style="transform: rotate(180deg)"/>
                 <img v-on:click="togglePause" v-bind:src="netflix.paused ? 'img/play.png' : 'img/pause.png'" />
-                <img v-on:click="skipInVideo(30)" src="img/next.png" />
+                <img v-on:click="skipInVideo(60)" src="img/next.png" />
               </div>
               <p>Want to watch something else?</p>
             </div>
