@@ -14,6 +14,10 @@ html, body {
 
 
 /* Styles for Tablet Specific Content*/
+canvas {
+  display: none;
+}
+
 img.icon {
   height: 120px;
   width: 120px;
@@ -56,10 +60,12 @@ div.controls div.header {
   line-height: 40px;
   border-bottom: 1px solid #333;
   margin: -20px -20px 20px -20px;
+  position: relative;
 }
 
 div.controls div.header button {
-    float: right;
+    position: absolute;
+    right: 20px;
     border-width: 0px;
     background: transparent;
     font-size: 40px;
@@ -113,6 +119,17 @@ div.controls ul li:first-child {
 
 div.controls #control-bar img {
     margin: 0px 20px 10px 20px;
+    cursor: pointer;
+}
+
+div.controls div.button {
+    line-height: 40px;
+    font-size: 20px;
+    border: 1px solid black;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px #666;
     cursor: pointer;
 }
 

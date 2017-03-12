@@ -14,6 +14,8 @@ init = ->
         title: null
         upgrade: false
         paused: false
+      camera:
+        img: ""
     display:
       mainScreen: "info"
       rearCameraEnabled: false
@@ -55,6 +57,17 @@ init = ->
       skipInVideo: (time) ->
         video = display.document.querySelector('#netflix video')
         video.currentTime += time
+      takePicture: ->
+        video = display.document.querySelector('#front-video')
+        canvas = tablet.document.querySelector('canvas')
+
+        canvas.width  = 640;
+        canvas.height = 480;
+        canvas.getContext('2d').drawImage(video, 0, 0, 640, 480)
+        imgSrc = canvas.toDataURL('image/png')
+        data.tablet.camera.img = imgSrc
+      sharePicture: ->
+        console.log "Sharing Picture"
 
   infoScreen =
     template: display.document.getElementById("info")
