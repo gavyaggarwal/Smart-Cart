@@ -106,6 +106,7 @@ init = ->
 
 loadFrontCamera = ->
   console.log "Loading Front Camera"
+  tablet.state.camera.img = ""
   display.navigator.mediaDevices.getUserMedia(
     video:
       deviceId: frontCamera
