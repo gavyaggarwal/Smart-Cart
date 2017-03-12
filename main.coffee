@@ -8,6 +8,7 @@ init = ->
     tablet:
       loggedIn: false
       currentApp: null
+      rearCameraEnabled: false
       netflix:
         isPlaying: false
         title: null
@@ -36,6 +37,7 @@ init = ->
         data.display.mainScreen = 'info'
         data.tablet.currentApp = null
       toggleRearCamera: ->
+        data.tablet.rearCameraEnabled = !data.tablet.rearCameraEnabled
         data.display.rearCameraEnabled = !data.display.rearCameraEnabled
       chooseMovie: (title, file, paid) ->
         data.tablet.netflix.upgrade = paid

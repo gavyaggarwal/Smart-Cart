@@ -10,7 +10,12 @@
   <body>
     <div id="tablet">
       <div v-if="loggedIn">
-        <h3>Welcome Gavy</h3>
+        <h3>
+          Welcome Gavy
+          <div v-on:click="toggleRearCamera">
+            Rear Camera <span>{{ rearCameraEnabled ? "Enabled" : "Disabled" }}</span>
+          </div>
+        </h3>
         <img v-on:click="launchApp('maps')" class="icon" src="img/maps.png" />
         <label>Maps</label>
         <img v-on:click="launchApp('netflix')" class="icon" src="img/netflix.png" />
@@ -19,7 +24,6 @@
         <label>Camera</label>
         <img v-on:click="launchApp('tinder')" class="icon" src="img/tinder.png" />
         <label>Tinder</label>
-        <button v-on:click="toggleRearCamera">Toggle Rear Camera</button>
         <transition name="controls">
           <div v-if="currentApp === 'maps'" class="controls">
             <div class="header">
