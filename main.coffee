@@ -23,7 +23,8 @@ init = ->
         file: null
       maps:
         timer: null
-        location: [0, 0]
+        x: 608 * 0.8
+        y: 1080 * 0.8
 
   tablet.state = data.tablet
   display.state = data.display
@@ -73,7 +74,9 @@ init = ->
     template: display.document.getElementById("info")
 
   mapsScreen =
-    template: display.document.getElementById("maps")
+    template: display.document.getElementById("maps-template")
+    data: ->
+      return data.display.maps
     beforeMount: loadMaps
     beforeDestroy: unloadMaps
 
@@ -171,7 +174,8 @@ updateLocation = ->
       console.log maxVal
       [x_, y_] = locations[maxLoc]
       [dx, dy] = [(x_ - x) * 0.4 * maxVal, (y_ - y) * 0.4 * maxVal]
-      display.state.maps.location = [x + dx, y + dy]
+      display.state.maps.x = x + dx
+      display.state.maps.y = y + dy
   catch error
     console.log "Error Updating Location", error
 

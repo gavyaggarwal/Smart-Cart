@@ -79,9 +79,11 @@
         </div><!--
       --></div>
     </script>
-    <script id="maps" type="x/template">
-      <div class="container">
-        <span>Maps Goes Here</span>
+    <script id="maps-template" type="x/template">
+      <div class="container" id="maps">
+        <div>
+          <div id="here" v-bind:style="'top:' + y + 'px;left:' + x + 'px;'">{{'top:' + y + ';left:' + x + ';'}}</div>
+        </div>
       </div>
     </script>
     <script id="netflix-template" type="x/template">

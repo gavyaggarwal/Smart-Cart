@@ -249,6 +249,42 @@ div#recommended div ul li span {
   padding: 0px;
 }
 
+div#maps {
+  background: white;
+}
+
+div#maps div {
+  width: 800px;
+  height: 875px;
+  background: url('img/map.png');
+  background-size: 100%;
+  margin: auto;
+  position: relative;
+}
+
+div#maps div div#here {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin: -10px 0px 0px -10px;
+  background: red;
+  position: absolute;
+  animation: pulse 5s infinite;
+  animation-direction: alternate;
+  transition: top 1s, left 1s;
+}
+
+@keyframes pulse {
+    from {
+      background: #2E86C1;
+      transform: scale(0.9);
+    }
+    to {
+      background: #3498DB;
+      transform: scale(1.1);
+    }
+}
+
 div#tinder {
   background: rgb(255, 254, 255);
   color: rgb(219, 102, 94);
