@@ -96,10 +96,27 @@ div.controls ul {
     max-height: 50vh;
 }
 
+div.controls ul.dense {
+    margin: 30px auto;
+    padding: 0;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 60vh;
+    column-count: 3;
+}
+
 div.controls ul li {
     padding: 20px;
     border-top: 1px solid #333;
     text-align: left;
+}
+
+div.controls ul.dense li {
+    padding: 20px;
+    border-top: 0px solid transparent;
+    text-align: center;
+    font-weight: bold;
 }
 
 div.controls ul li span {
@@ -272,6 +289,22 @@ div#maps div div#here {
   animation: pulse 5s infinite;
   animation-direction: alternate;
   transition: top 1s, left 1s;
+}
+
+div#maps div div#pin {
+  width: 105px;
+  height: 169px;
+  background: url('img/pin.png');
+  background-size: 100%;
+  position: absolute;
+  margin: -165px 0px 0px -53px;
+}
+
+div#maps div div#pin img {
+  width: 68px;
+  height: 68px;
+  border-radius: 34px;
+  margin: 17px 0px 0px -1px;
 }
 
 @keyframes pulse {

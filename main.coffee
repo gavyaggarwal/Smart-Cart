@@ -3,6 +3,8 @@ display = window.open 'display.html', 'display'
 
 display.document.readyState = null
 
+mapScale = 0.8
+
 init = ->
   data =
     tablet:
@@ -23,8 +25,11 @@ init = ->
         file: null
       maps:
         timer: null
-        x: 608 * 0.8
-        y: 1080 * 0.8
+        x: 608 * mapScale
+        y: 1080 * mapScale
+        pinX: -1000
+        pinY: -1000
+        item: ""
 
   tablet.state = data.tablet
   display.state = data.display
@@ -69,6 +74,11 @@ init = ->
         data.tablet.camera.img = imgSrc
       sharePicture: ->
         console.log "Sharing Picture"
+      choosePin: (x, y, img) ->
+        console.log 'hi'
+        data.display.maps.pinX = x * mapScale
+        data.display.maps.pinY = y * mapScale
+        data.display.maps.item = img
 
   infoScreen =
     template: display.document.getElementById("info")
@@ -140,6 +150,8 @@ unloadRearCamera = ->
     track.stop()
 
 loadMaps = ->
+  display.state.maps.pinX = -1000
+  display.state.maps.pinY = -1000
   display.state.maps.timer = setInterval updateLocation, 5000
   do updateLocation
 
@@ -174,8 +186,8 @@ updateLocation = ->
       console.log maxVal
       [x_, y_] = locations[maxLoc]
       [dx, dy] = [(x_ - x) * 0.4 * maxVal, (y_ - y) * 0.4 * maxVal]
-      display.state.maps.x = x + dx
-      display.state.maps.y = y + dy
+      display.state.maps.x = (x + dx) * mapScale
+      display.state.maps.y = (y + dy) * mapScale
   catch error
     console.log "Error Updating Location", error
 

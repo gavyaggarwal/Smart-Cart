@@ -82,7 +82,10 @@
     <script id="maps-template" type="x/template">
       <div class="container" id="maps">
         <div>
-          <div id="here" v-bind:style="'top:' + y + 'px;left:' + x + 'px;'">{{'top:' + y + ';left:' + x + ';'}}</div>
+          <div id="here" v-bind:style="'top:' + y + 'px;left:' + x + 'px;'"></div>
+          <div id="pin" v-bind:style="'top:' + pinY + 'px;left:' + pinX + 'px;'">
+            <img src="img/applesauce.jpg" v-bind:src="item" />
+          </div>
         </div>
       </div>
     </script>
