@@ -278,12 +278,16 @@ div#maps {
 }
 
 div#maps div {
-  width: 800px;
-  height: 875px;
+  width: 650px;
+  height: 711px;
   background: url('img/map.png');
   background-size: 100%;
   margin: auto;
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 div#maps div div#here {

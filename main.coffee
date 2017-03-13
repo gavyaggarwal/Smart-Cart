@@ -3,7 +3,7 @@ display = window.open 'display.html', 'display'
 
 display.document.readyState = null
 
-mapScale = 0.8
+mapScale = 0.65
 
 init = ->
   data =

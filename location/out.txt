@@ -1,9 +1,9 @@
 DEPRECATED Action signature.  Must be `cli.ActionFunc`.  This is an error in the application.  Please contact the distributor of this application if this is not you.  See https://github.com/urfave/cli/blob/master/CHANGELOG.md#deprecated-cli-app-action-signature
-03:37:25.704 main - NOTI 001 You can see fewer messages by adding --nodebug
-03:37:25.704 main - NOTI 002 User: user
-03:37:25.704 main - NOTI 003 Group: plushpygmy
-03:37:25.704 main - NOTI 004 Server: http://192.168.0.143:8003/track
-03:37:25.704 main - NOTI 005 Running 1 times (you can run more using '-c SOMENUM'). Please wait...
-03:37:25.704 main - INFO 006 Scanning Wifi
-03:37:25.704 scanWifi - INFO 007 Gathering fingerprint with 'bin/windows-wlan-util.exe query'
-03:37:25.727 main - INFO 008 Processing 38 lines out output
+13:17:27.408 main - NOTI 001 You can see fewer messages by adding --nodebug
+13:17:27.408 main - NOTI 002 User: user
+13:17:27.408 main - NOTI 003 Group: plushpygmy
+13:17:27.408 main - NOTI 004 Server: http://192.168.0.143:8003/track
+13:17:27.408 main - NOTI 005 Running 1 times (you can run more using '-c SOMENUM'). Please wait...
+13:17:27.408 main - INFO 006 Scanning Wifi
+13:17:27.408 scanWifi - INFO 007 Gathering fingerprint with 'bin/windows-wlan-util.exe query'
+13:17:27.423 main - INFO 008 Processing 63 lines out output
