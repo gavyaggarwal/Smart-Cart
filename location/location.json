@@ -1,1 +1,1 @@
-{"bayes":{"frontdoor":-0.9511316596410211,"rampbottom":-0.3205170591758376,"ramptop":-0.16274500147481857,"stairbase":-0.008550506658721369,"window":1.4429442269503996},"location":"window","message":"Current location: window","rf":null,"success":true,"svm":{}}
+{"bayes":{"frontdoor":0.0700249218602487,"rampbottom":1.4370157578555494,"ramptop":-0.20617240039153423,"stairbase":-0.9167344659833252,"window":-0.38413381334093755},"location":"rampbottom","message":"Current location: rampbottom","rf":null,"success":true,"svm":{}}
