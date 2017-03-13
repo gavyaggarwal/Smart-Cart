@@ -1,0 +1,9 @@
+DEPRECATED Action signature.  Must be `cli.ActionFunc`.  This is an error in the application.  Please contact the distributor of this application if this is not you.  See https://github.com/urfave/cli/blob/master/CHANGELOG.md#deprecated-cli-app-action-signature
+01:11:17.348 main - NOTI 001 You can see fewer messages by adding --nodebug
+01:11:17.348 main - NOTI 002 User: user
+01:11:17.348 main - NOTI 003 Group: plushpygmy
+01:11:17.348 main - NOTI 004 Server: http://192.168.0.143:8003/track
+01:11:17.348 main - NOTI 005 Running 1 times (you can run more using '-c SOMENUM'). Please wait...
+01:11:17.348 main - INFO 006 Scanning Wifi
+01:11:17.349 scanWifi - INFO 007 Gathering fingerprint with 'bin/windows-wlan-util.exe query'
+01:11:17.367 main - INFO 008 Processing 57 lines out output

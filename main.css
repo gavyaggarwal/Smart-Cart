@@ -257,9 +257,8 @@ div#tinder {
 
 div#tinder img {
   display: block;
-  margin: auto;
   height: 204px;
-  margin-bottom: 50px;
+  margin: 10% auto 50px auto;
 }
 
 div #tinder h4 {

@@ -6,7 +6,6 @@ display.document.readyState = null
 init = ->
   data =
     tablet:
-      loggedIn: false
       currentApp: null
       rearCameraEnabled: false
       netflix:
@@ -22,6 +21,9 @@ init = ->
       netflix:
         isPlaying: false
         file: null
+      maps:
+        timer: null
+        location: [0, 0]
 
   tablet.state = data.tablet
   display.state = data.display
@@ -30,8 +32,6 @@ init = ->
     el: tablet.document.getElementById("tablet")
     data: data.tablet
     methods:
-      login: ->
-        data.tablet.loggedIn = true
       launchApp: (app) ->
         data.display.mainScreen = app
         data.tablet.currentApp = app
@@ -74,6 +74,8 @@ init = ->
 
   mapsScreen =
     template: display.document.getElementById("maps")
+    beforeMount: loadMaps
+    beforeDestroy: unloadMaps
 
   netflixScreen =
     template: display.document.getElementById("netflix-template")
@@ -133,6 +135,45 @@ unloadRearCamera = ->
   console.log "Unloading Rear Camera"
   for track in display.rearStream.getTracks()
     track.stop()
+
+loadMaps = ->
+  display.state.maps.timer = setInterval updateLocation, 5000
+  do updateLocation
+
+unloadMaps = ->
+  clearInterval display.state.maps.timer
+
+updateLocation = ->
+  locations =
+    frontDoor: [608, 1080]
+    rampBottom: [500, 1000]
+    rampTop: [500, 818]
+    window: [808, 890]
+    stairBase: [770, 780]
+    door132: [450, 650]
+    elevator: [658, 502]
+    mailboxes: [715, 205]
+    door146: [450, 240]
+    door151: [326, 94]
+    junction140: [330, 412]
+    door128: [500, 118]
+    door141: [96, 410]
+    door118: [888, 140]
+    door112: [888, 478]
+    stairTop: [760, 620]
+  try
+    $.getJSON "location/location.json", (location) ->
+      [x, y] = locations[location]
+      [maxLoc, maxVal] = [null, -10]
+      for loc, val of location.bayes
+        if val > maxVal
+          [maxLoc, maxVal] = [loc, val]
+      console.log maxVal
+      [x_, y_] = locations[maxLoc]
+      [dx, dy] = [(x_ - x) * 0.4 * maxVal, (y_ - y) * 0.4 * maxVal]
+      display.state.maps.location = [x + dx, y + dy]
+  catch error
+    console.log "Error Updating Location", error
 
 backCamera = null
 frontCamera = null
