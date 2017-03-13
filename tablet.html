@@ -10,117 +10,122 @@
   </head>
   <body>
     <div id="tablet">
-      <div v-if="loggedIn">
-        <h3>
-          Welcome Gavy
-          <div v-on:click="toggleRearCamera">
-            Rear Camera <span>{{ rearCameraEnabled ? "Enabled" : "Disabled" }}</span>
+      <h3>
+        Welcome to FoodMart
+        <div v-on:click="toggleRearCamera">
+          Rear Camera <span>{{ rearCameraEnabled ? "Enabled" : "Disabled" }}</span>
+        </div>
+      </h3>
+      <img v-on:click="launchApp('maps')" class="icon" src="img/maps.png" />
+      <label>Maps</label>
+      <img v-on:click="launchApp('netflix')" class="icon" src="img/netflix.png" />
+      <label>Netflix</label>
+      <img v-on:click="launchApp('camera')" class="icon" src="img/camera.png" />
+      <label>Camera</label>
+      <img v-on:click="launchApp('tinder')" class="icon" src="img/tinder.png" />
+      <label>Tinder</label>
+      <transition name="controls">
+        <div v-if="currentApp === 'maps'" class="controls">
+          <div class="header">
+            Maps<button v-on:click="closeApp">✖</button>
           </div>
-        </h3>
-        <img v-on:click="launchApp('maps')" class="icon" src="img/maps.png" />
-        <label>Maps</label>
-        <img v-on:click="launchApp('netflix')" class="icon" src="img/netflix.png" />
-        <label>Netflix</label>
-        <img v-on:click="launchApp('camera')" class="icon" src="img/camera.png" />
-        <label>Camera</label>
-        <img v-on:click="launchApp('tinder')" class="icon" src="img/tinder.png" />
-        <label>Tinder</label>
-        <transition name="controls">
-          <div v-if="currentApp === 'maps'" class="controls">
-            <div class="header">
-              Maps<button v-on:click="closeApp">✖</button>
-            </div>
+          <p>What are you looking for?</p>
+          <ul>
+            <li>
+              <span>Apples</span>
+            </li>
+            <li>
+              <span>Bananas</span>
+            </li>
+            <li>
+              <span>Carrots</span>
+            </li>
+          </ul>
+        </div>
+      </transition>
+      <transition name="controls">
+        <div v-if="currentApp === 'netflix'" class="controls">
+          <div class="header">
+            Netflix<button v-on:click="closeApp">✖</button>
           </div>
-        </transition>
-        <transition name="controls">
-          <div v-if="currentApp === 'netflix'" class="controls">
-            <div class="header">
-              Netflix<button v-on:click="closeApp">✖</button>
+          <div v-if="netflix.isPlaying">
+            <p>Now Playing:</p>
+            <h4>{{ netflix.title }}</h4>
+            <div id="control-bar">
+              <img v-on:click="skipInVideo(-60)" src="img/next.png" style="transform: rotate(180deg)"/>
+              <img v-on:click="togglePause" v-bind:src="netflix.paused ? 'img/play.png' : 'img/pause.png'" />
+              <img v-on:click="skipInVideo(60)" src="img/next.png" />
             </div>
-            <div v-if="netflix.isPlaying">
-              <p>Now Playing:</p>
-              <h4>{{ netflix.title }}</h4>
-              <div id="control-bar">
-                <img v-on:click="skipInVideo(-60)" src="img/next.png" style="transform: rotate(180deg)"/>
-                <img v-on:click="togglePause" v-bind:src="netflix.paused ? 'img/play.png' : 'img/pause.png'" />
-                <img v-on:click="skipInVideo(60)" src="img/next.png" />
-              </div>
-              <p>Want to watch something else?</p>
-            </div>
-            <div v-else>
-              <p>What would you like to watch?</p>
-            </div>
-            <ul>
-              <li v-on:click="chooseMovie('Zootopia', 'zootopia.avi', false)">
-                <span>Zootopia (2016)</span>
-                In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.
-              </li>
-              <li v-on:click="chooseMovie('Deadpool', 'deadpool.webm', false)">
-                <span>Deadpool (2016)</span>
-                A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge.
-              </li>
-              <li v-on:click="chooseMovie('La La Land', '', true)">
-                <span>La La Land (2016)<span class="paid">$$$</span></span>
-                A jazz pianist falls for an aspiring actress in Los Angeles.
-              </li>
-              <li v-on:click="chooseMovie('Suicide Squad', '', true)">
-                <span>Suicide Squad (2016)<span class="paid">$$$</span></span>
-                A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force. Their first mission: save the world from the apocalypse.
-              </li>
-              <li v-on:click="chooseMovie('Billions', 'billions.webm', false)">
-                <span>Billions (2016)</span>
-                U.S. Attorney Chuck Rhoades goes after hedge fund king, Bobby "Axe" Axelrod in a battle between two powerful New York figures.
-              </li>
-              <li v-on:click="chooseMovie('How I Met Your Mother', '', true)">
-                <span>How I Met Your Mother (2005 - 2014)<span class="paid">$$$</span></span>
-                A father recounts to his children, through a series of flashbacks, the journey he and his four best friends took leading up to him meeting their mother.
-              </li>
-              <li v-on:click="chooseMovie('Narcos', '', true)">
-                <span>Narcos (2015 - )<span class="paid">$$$</span></span>
-                A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar.
-              </li>
-            </ul>
-            <p v-if="netflix.upgrade" class="error">
-              {{ netflix.title }} is a premium title. To enable playback of this
-              content, you must either see a sales associate to make a one-time
-              payment of $0.99 to a sales associate or buy at least 2 of today's
-              featured products.
-            </p>
+            <p>Want to watch something else?</p>
           </div>
-        </transition>
-        <transition name="controls">
-          <div v-if="currentApp === 'camera'" class="controls">
-            <div class="header">
-              Camera<button v-on:click="closeApp">✖</button>
-            </div>
-            <div class="button" v-on:click="takePicture">Take Picture</div>
-            <img id="photo" v-bind:src="camera.img" />
-            <div class="button" v-if="camera.img" v-on:click="sharePicture">Share Picture</div>
+          <div v-else>
+            <p>What would you like to watch?</p>
           </div>
-        </transition>
-        <transition name="controls">
-          <div v-if="currentApp === 'tinder'" class="controls">
-            <div class="header">
-              Tinder<button v-on:click="closeApp">✖</button>
-            </div>
-            <h4>Tinder Requires a Subscription</h4>
-            <p>
-              We know that shopping can be a bore sometimes, so we've made your
-              favorite dating app available for the Smart Cart. You'll be able to
-              shop for groceries and love at the same time by discovering new and
-              interesting people nearby and chatting with your matches. Please visit
-              one of our sales associates to enable this feature. A monthly charge
-              of $2.99 may apply.
-            </p>
+          <ul>
+            <li v-on:click="chooseMovie('Zootopia', 'zootopia.avi', false)">
+              <span>Zootopia (2016)</span>
+              In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.
+            </li>
+            <li v-on:click="chooseMovie('Deadpool', 'deadpool.webm', false)">
+              <span>Deadpool (2016)</span>
+              A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge.
+            </li>
+            <li v-on:click="chooseMovie('La La Land', '', true)">
+              <span>La La Land (2016)<span class="paid">$$$</span></span>
+              A jazz pianist falls for an aspiring actress in Los Angeles.
+            </li>
+            <li v-on:click="chooseMovie('Suicide Squad', '', true)">
+              <span>Suicide Squad (2016)<span class="paid">$$$</span></span>
+              A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force. Their first mission: save the world from the apocalypse.
+            </li>
+            <li v-on:click="chooseMovie('Billions', 'billions.webm', false)">
+              <span>Billions (2016)</span>
+              U.S. Attorney Chuck Rhoades goes after hedge fund king, Bobby "Axe" Axelrod in a battle between two powerful New York figures.
+            </li>
+            <li v-on:click="chooseMovie('How I Met Your Mother', '', true)">
+              <span>How I Met Your Mother (2005 - 2014)<span class="paid">$$$</span></span>
+              A father recounts to his children, through a series of flashbacks, the journey he and his four best friends took leading up to him meeting their mother.
+            </li>
+            <li v-on:click="chooseMovie('Narcos', '', true)">
+              <span>Narcos (2015 - )<span class="paid">$$$</span></span>
+              A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar.
+            </li>
+          </ul>
+          <p v-if="netflix.upgrade" class="error">
+            {{ netflix.title }} is a premium title. To enable playback of this
+            content, you must either see a sales associate to make a one-time
+            payment of $0.99 to a sales associate or buy at least 2 of today's
+            featured products.
+          </p>
+        </div>
+      </transition>
+      <transition name="controls">
+        <div v-if="currentApp === 'camera'" class="controls">
+          <div class="header">
+            Camera<button v-on:click="closeApp">✖</button>
+          </div>
+          <div class="button" v-on:click="takePicture">Take Picture</div>
+          <img id="photo" v-bind:src="camera.img" />
+          <div class="button" v-if="camera.img" v-on:click="sharePicture">Share Picture</div>
+        </div>
+      </transition>
+      <transition name="controls">
+        <div v-if="currentApp === 'tinder'" class="controls">
+          <div class="header">
+            Tinder<button v-on:click="closeApp">✖</button>
+          </div>
+          <h4>Tinder Requires a Subscription</h4>
+          <p>
+            We know that shopping can be a bore sometimes, so we've made your
+            favorite dating app available for the Smart Cart. You'll be able to
+            shop for groceries and love at the same time by discovering new and
+            interesting people nearby and chatting with your matches. Please visit
+            one of our sales associates to enable this feature. A monthly charge
+            of $2.99 may apply.
+          </p>
 
-          </div>
-        </transition>
-      </div>
-      <div v-else>
-        Log In Screen Comes Here
-        [INPUT FIELDS GO HERE]
-        <button v-on:click="login">Login</button>
-      </div>
+        </div>
+      </transition>
     </div>
     <canvas></canvas>
   </body>

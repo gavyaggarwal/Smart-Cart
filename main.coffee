@@ -6,7 +6,6 @@ display.document.readyState = null
 init = ->
   data =
     tablet:
-      loggedIn: false
       currentApp: null
       rearCameraEnabled: false
       netflix:
@@ -33,8 +32,6 @@ init = ->
     el: tablet.document.getElementById("tablet")
     data: data.tablet
     methods:
-      login: ->
-        data.tablet.loggedIn = true
       launchApp: (app) ->
         data.display.mainScreen = app
         data.tablet.currentApp = app
@@ -173,7 +170,7 @@ updateLocation = ->
           [maxLoc, maxVal] = [loc, val]
       console.log maxVal
       [x_, y_] = locations[maxLoc]
-      [dx, dy] = [(x_ - x) * 0.5 * maxVal, (y_ - y) * 0.5 * maxVal]
+      [dx, dy] = [(x_ - x) * 0.4 * maxVal, (y_ - y) * 0.4 * maxVal]
       display.state.maps.location = [x + dx, y + dy]
   catch error
     console.log "Error Updating Location", error
