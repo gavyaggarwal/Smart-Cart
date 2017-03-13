@@ -194,16 +194,23 @@ h3 div span {
 
 
 /* Styles for Display Specific Content*/
+div#display {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(90deg) translateY(-100vw);
+  transform-origin: 0% 0%;
+}
+
 div.container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   position: relative;
   transition: height 0.5s;
 }
 
 div.container.split {
-  height: 50vh;
+  height: 50%;
 }
 
 div.container video {
@@ -288,7 +295,7 @@ div#maps div div#here {
   position: absolute;
   animation: pulse 5s infinite;
   animation-direction: alternate;
-  transition: top 1s, left 1s;
+  transition: top 3s, left 3s;
 }
 
 div#maps div div#pin {
@@ -310,11 +317,11 @@ div#maps div div#pin img {
 @keyframes pulse {
     from {
       background: #2E86C1;
-      transform: scale(0.9);
+      transform: scale(0.8);
     }
     to {
       background: #3498DB;
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
 }
 
@@ -326,26 +333,44 @@ div#tinder {
 
 div#tinder img {
   display: block;
-  height: 204px;
-  margin: 10% auto 50px auto;
+  height: 300px;
+  margin: 0px auto;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
 }
 
 div #tinder h4 {
   font-weight: 600;
-  font-size: 2.5em;
-  margin: 12px;
+  font-size: 3em;
+  margin: 300px auto 0px auto;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
 }
 
 div #tinder h5 {
   font-weight: 500;
-  font-size: 1.6em;
-  margin: 12px;
+  font-size: 2em;
+  margin: 330px auto 0px auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
 }
 
 div#tinder p {
-  max-width: 400px;
+  font-weight: 500;
+  max-width: 450px;
   text-align: justify;
-  margin: auto;
+  margin: 340px auto 0px auto;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  font-size: 1.1em;
 }
 
 div#netflix {
@@ -356,14 +381,23 @@ div#netflix {
 div#netflix img {
   display: block;
   height: 150px;
-  margin: 15% auto 20px auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 div#netflix p {
-  max-width: 400px;
+  font-size: 1.3em;
+  max-width: 500px;
   text-align: justify;
-  margin: auto;
+  margin: 150px auto 0px auto;
   color: rgb(233, 41, 44);
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
 }
 
 div#rear-camera {

@@ -160,11 +160,11 @@ unloadMaps = ->
 
 updateLocation = ->
   locations =
-    frontDoor: [608, 1080]
-    rampBottom: [500, 1000]
-    rampTop: [500, 818]
+    frontdoor: [608, 1080]
+    rampbottom: [500, 1000]
+    ramptop: [500, 818]
     window: [808, 890]
-    stairBase: [770, 780]
+    stairbase: [770, 780]
     door132: [450, 650]
     elevator: [658, 502]
     mailboxes: [715, 205]
@@ -175,15 +175,16 @@ updateLocation = ->
     door141: [96, 410]
     door118: [888, 140]
     door112: [888, 478]
-    stairTop: [760, 620]
+    stairtop: [760, 620]
   try
     $.getJSON "location/location.json", (location) ->
-      [x, y] = locations[location]
+      console.log location.location
+      [x, y] = locations[location.location]
       [maxLoc, maxVal] = [null, -10]
       for loc, val of location.bayes
-        if val > maxVal
+        if val > maxVal and loc != location.location
           [maxLoc, maxVal] = [loc, val]
-      console.log maxVal
+      console.log maxVal, maxLoc
       [x_, y_] = locations[maxLoc]
       [dx, dy] = [(x_ - x) * 0.4 * maxVal, (y_ - y) * 0.4 * maxVal]
       display.state.maps.x = (x + dx) * mapScale
