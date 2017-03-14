@@ -208,7 +208,7 @@ camerasLoaded = new Promise((resolve, reject) ->
     devices = devices.filter((d) -> d.kind is "videoinput")
     for device in devices
       console.log "Found Camera:", device.label
-      if device.label is 'Microsoft Camera Rear'
+      if device.label is 'Senstic PocketCam'
         backCamera = device.deviceId
       if device.label is 'Microsoft Camera Front'
         frontCamera = device.deviceId
